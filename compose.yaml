@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    image: blk-hacking-ind-pradhuman
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blk-hacking-ind-pradhuman
+    ports:
+      - "5477:5477"
+    environment:
+      - SPRING_APPLICATION_NAME=demo
+      - SERVER_PORT=5477
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
